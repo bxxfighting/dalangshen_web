@@ -6,6 +6,9 @@
       </el-form-item>
       <el-form-item label="密码" prop="password">
         <el-input v-model="form.password" />
+        <el-button @click="genPassword">
+          生成密码
+        </el-button>
       </el-form-item>
       <el-form-item label="备注" prop="remark">
         <el-input v-model="form.remark" />
@@ -28,6 +31,9 @@ import {
   encrypt,
   decrypt
 } from '@/utils/crypto'
+import {
+  genPassword
+} from '@/utils/password'
 import { enc } from 'crypto-js/core'
 export default {
   name: 'FormDialog',
@@ -157,6 +163,9 @@ export default {
           })
         }
       })
+    },
+    genPassword() {
+      this.form.password = genPassword(10, 'complex')
     }
   }
 }
