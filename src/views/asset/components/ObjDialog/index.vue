@@ -98,7 +98,7 @@ export default {
         if (resp.code === 0) {
           this.form = resp.data
           const password = resp.data.password
-          this.form.password = decrypt(password)
+          this.form.password = decrypt(password, this.salt)
         }
         this.loading = false
       })
